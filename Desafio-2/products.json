@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "title": "camiseta",
+        "description": "Camiseta de argentina",
+        "price": 32000,
+        "thumbnail": "https://www.camiseta.com.br/wp-content/uploads/2020/03/camiseta-de-carne-1.jpg",
+        "code": 1686790114733,
+        "stock": 10
+    },
+    {
+        "id": 2,
+        "title": "pantalon de futbol",
+        "description": "pantalon de futbol",
+        "price": 5000,
+        "thumbnail": "https://www.camiseta.com.br/wp-content/uploads/2020/03/camiseta-de-carne-1.jpg",
+        "code": 1686790115281,
+        "stock": 10
+    },
+    {
+        "id": 3,
+        "title": "pantalon trabajo",
+        "description": "pantalon largo cargo",
+        "price": 10000,
+        "thumbnail": "https://www.camiseta.com.br/wp-content/uploads/2020/03/camiseta-de-carne-1.jpg",
+        "code": 1686790115348,
+        "stock": 10
+    }
+]
