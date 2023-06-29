@@ -41,48 +41,46 @@ const getIdUnique = async () => {
 }
 
 export const addProductToCart = async (idCart, idProduct) => {
-
-    const cartFile = await getCarts()
-    const existCart = await getCartById(idCart)
-    const existeProduct = await getProducsById(idProduct)
-
-
     try {
+        const cartFile = await getCarts();
+        const existCart = await getCartById(+ idCart);
+        const existeProduct = await getProducsById(+ idProduct);
 
         if (existCart && existeProduct) {
-
-            const existProductCart = existCart.product.find(prod => prod.id === idProduct)
+            const existProductCart = existCart.product.find((prod) => prod.id === idProduct);
 
             if (! existProductCart) {
-
                 const prod = {
                     id: idProduct,
                     qty: 1
-                }
-                existCart.product.push(prod)
-
+                };
+                existCart.product.push(prod);
             } else {
-                existProductCart.qty + 1;
+                existProductCart.qty += 1;
             }
 
-            await fs.promises.writeFile(pathFileCart, JSON.stringify(cartFile))
+            // Actualizar el carrito en el arreglo de carritos
+            const updatedCartFile = cartFile.map((cart) => {
+                if (cart.id === idCart) {
+                    return existCart;
+                }
+                return cart;
+            });
 
-            console.log(cartFile)
-            console.log(existCart)
-            return existCart;
+            // Sobrescribir el archivo con los datos actualizados
+            await fs.promises.writeFile(pathFileCart, JSON.stringify(updatedCartFile));
 
+            console.log(updatedCartFile);
+            console.log(existCart);
 
+            return updatedCartFile;
         } else {
-            console.log('Not found')
+            console.log('Not found');
         }
-
-
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-
-
-}
+};
 
 
 export const getCarts = async () => {

@@ -42,8 +42,7 @@ router.post('/:idCart/:idProduct', async (req, res) => {
         if (existCart) {
 
             await addProductToCart(+ idCart, + idProduct)
-
-            res.json(existCart)
+            res.status(200).json({msg: `El producto ${idProduct} se agrego al carrito ${idCart} `})
 
 
         } else {
