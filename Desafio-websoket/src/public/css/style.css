@@ -1,0 +1,78 @@
+h1{
+    color: brown;
+    font-size: 4rem;
+}
+
+h3{
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.product, .productoP {
+max-width: 600px;
+display: flex;
+flex-direction: column;
+text-align: center;
+}
+
+.productosListaReal{
+    margin-bottom: 2rem;
+    font-weight: 700;
+    border: 1px solid gray; 
+    display: grid;
+    justify-items:center;
+    align-items: center;
+    grid-template-columns: 80% 20%
+}
+
+.productosLista{
+    margin-bottom: 2rem;
+    font-weight: 700;
+    border: 1px solid gray; 
+  
+}
+
+.btnEliminar{
+  
+    color: rgb(231, 215, 215);
+    background-color: rgb(196, 14, 54);
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border-radius: 5rem;
+}
+
+
+
+.container{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    column-gap: 2rem;
+}
+
+.formulario{
+    text-align: center;
+}
+
+.campo {
+    display: flex;
+    align-items: center;
+  padding: 2rem;
+    margin-bottom: 1rem;
+}
+
+.campo label{
+    margin-right: 1rem;
+}
+
+.btn{
+    color: rgb(47, 63, 63);
+    background-color: rgb(154, 154, 240);
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border-radius: 5rem;
+}
+
+.product{
+    text-align: center;
+}
+

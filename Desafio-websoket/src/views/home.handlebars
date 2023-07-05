@@ -1,0 +1,38 @@
+<div class="container">
+
+  <form class="formulario" id="formulario">
+
+    <h3>Agregar productos</h3>
+
+    <div class="campo">
+      <label>Title:</label>
+      <input type="text" name="name" id="title" />
+    </div>
+
+    <div class="campo">
+      <label>Description</label>
+      <textarea name="description" id="description">Description</textarea>
+    </div>
+
+    <div class="campo">
+      <label>Price:</label>
+      <input type="number" name="price" id="price" />
+    </div>
+
+    <div class="campo">
+      <label>Thumbnail</label>
+      <input type="file" name="thumbnail" id="thumbnail" />
+    </div>
+
+    <input class="btn" id="btn" type="submit" value="SEND" />
+  </form>
+
+  <div class="product">
+    <h3>Producto Agregado</h3>
+    <p id="products"></p>
+  </div>
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="index.js"></script>
