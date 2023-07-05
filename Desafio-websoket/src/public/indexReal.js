@@ -2,10 +2,11 @@ const socketClientReal = io()
 
 // realTime
 const productoP = document.getElementById('productoP')
-const btnEliminar = document.getElementById('btnEliminar');
+const btnEliminarArray = document.getElementsByClassName('btnEliminar');
 
 
 socketClientReal.on('Products', async (produc) => {
+
     const productosReal = await produc.map(prod => {
         return `
       <div class="productosListaReal">
@@ -29,13 +30,19 @@ socketClientReal.on('Products', async (produc) => {
 
     productoP.innerHTML = productosReal;
 
-    const btnEliminarArray = document.getElementsByClassName('btnEliminar');
+
     for (let i = 0; i < btnEliminarArray.length; i++) {
         const btnEliminar = btnEliminarArray[i];
 
         btnEliminar.addEventListener('click', function () {
             const productId = this.getAttribute('data-product-id');
-            socketClientReal.emit('eliminarProduct', productId);
+            console.log(productId)
+            socketClientReal.emit('eliminarProduct', (productId));
         });
     }
+
+
 });
+
+
+// ESTOY TENIENDO UN PROBLEMA QUE NO ME ENVIA EL ID AL SERVER, INTENTE DE TODO Y NOSE PORQUE, FIJATE SI ME LO PODES REVISAR Y VER QUE PUEDE PASAR

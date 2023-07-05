@@ -98,6 +98,7 @@ export const getEliminarProducto = async (id) => {
 
 
     await fs.promises.writeFile(pathFile, JSON.stringify(producstActualizados))
+
 }
 
 export const updateProducts = async (id, title, description, price, thumbnail) => {

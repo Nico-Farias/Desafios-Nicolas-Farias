@@ -40,6 +40,11 @@ text-align: center;
     font-weight: bold;
     border-radius: 5rem;
 }
+.btnEliminar:hover{
+    cursor: pointer;
+    background-color: rgb(241, 141, 141);
+    color: black;
+}
 
 
 

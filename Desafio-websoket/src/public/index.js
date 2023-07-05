@@ -20,29 +20,26 @@ btn.addEventListener('click', () => {
         thumbnail: thumbnail.value
     })
 
+    socketClient.on('prodId', (prod) => {
 
-})
-socketClient.on('Products', async (produc) => {
-
-    const productos = await produc.map(prod => {
-        return `
-    <div class="productosLista">
-      <p>Id:  ${
+        products.innerHTML = `
+           <div class="productosLista">
+            <p>Id:  ${
             prod.id
         } </p>
-      <p>Name:  ${
+            <p>Name:  ${
             prod.title
         } </p>
-      <p>Description:  ${
+            <p>Description:  ${
             prod.description
         }</p>
-      <p>Price:  $${
+            <p>Price:  $${
             prod.price
         } </p>
     
-     
-    </div>
-    `
+           </div>`
+
     })
-    products.innerHTML = productos
+
+
 })
