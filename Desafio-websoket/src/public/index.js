@@ -20,26 +20,26 @@ btn.addEventListener('click', () => {
         thumbnail: thumbnail.value
     })
 
-    socketClient.on('prodId', (prod) => {
 
-        products.innerHTML = `
+})
+socketClient.on('prodId', (id) => {
+
+    products.innerHTML = `
            <div class="productosLista">
             <p>Id:  ${
-            prod.id
-        } </p>
+        prod.id
+    } </p>
             <p>Name:  ${
-            prod.title
-        } </p>
+        prod.title
+    } </p>
             <p>Description:  ${
-            prod.description
-        }</p>
+        prod.description
+    }</p>
             <p>Price:  $${
-            prod.price
-        } </p>
+        prod.price
+    } </p>
     
            </div>`
-
-    })
 
 
 })

@@ -36,8 +36,10 @@ socketClientReal.on('Products', async (produc) => {
 
         btnEliminar.addEventListener('click', function () {
             const productId = this.getAttribute('data-product-id');
-            console.log(productId)
-            socketClientReal.emit('eliminarProduct', (productId));
+            const id = Number(productId)
+
+            console.log(typeof(id))
+            socketClientReal.emit('eliminarProduct', (id));
         });
     }
 

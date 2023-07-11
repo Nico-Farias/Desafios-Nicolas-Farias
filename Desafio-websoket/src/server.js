@@ -43,7 +43,7 @@ socketServer.on('connection', async (socket) => {
     // NO ME LO ELIMINA, NO ME LLEGA EL ID DESDE EL INDEXREAL
     socket.on('eliminarProduct', async (id) => {
 
-        await getEliminarProducto(id);
+        await getEliminarProducto(+ id);
 
         socketServer.emit('Products', await getProducs());
 
