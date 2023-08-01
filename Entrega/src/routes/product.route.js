@@ -24,13 +24,13 @@ router.get('/id/:id', getById);
 
 router.post('/', create);
 
-router.post('/:idCart/:idProd', addProduct)
+router.post('/:idCart/add/:idProduct', addProduct)
 
 router.put('/:id', update);
 
 router.delete('/:id', remove);
 
-router.get('/name', filtroCategory)
+router.get('/category', filtroCategory)
 
 router.get('/filtrarMaxAMin', filtroPriceMaxAMin)
 router.get('/filtrarMinAMAX', filtroPriceMinAMax)

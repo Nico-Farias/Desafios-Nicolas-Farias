@@ -1,6 +1,6 @@
 import {CartModel} from './models/cart.model.js';
 import {ProductModel} from './models/product.model.js';
-
+import mongoose from 'mongoose';
 
 export default class ProductDaoMongo {
     async create(product) {
@@ -14,25 +14,40 @@ export default class ProductDaoMongo {
 
     async addProduct(idCart, idProduct) {
         try {
+            const cart = await CartModel.findById(idCart);
 
-            const carts = await CartModel.findById(idCart)
-            const product = await ProductModel.findById(idProduct)
-
-            if (! carts || ! product) {
-                throw new Error('El carrito o el producto no existen');
+            if (! cart) {
+                throw new Error('El carrito no existe');
             }
 
-            carts.products.push(idProduct);
-            product.qty += 1;
 
-            carts.save();
-            product.save();
+            // Verifica si el producto existe en la base de datos antes de agregarlo al carrito
+            const existingProduct = await ProductModel.findById(idProduct);
+
+            if (! existingProduct) {
+                throw new Error('El producto no existe');
+            }
+
+            // Verifica si el producto ya existe en el carrito por su id
+            const existingProductInCart = cart.products.find(product => product._id.equals(idProduct));
+
+            if (existingProductInCart) { // Si el producto ya existe, incrementa su cantidad en 1
+                existingProductInCart.qty += 1;
+            } else { // Si el producto no existe en el carrito, agrega el producto al carrito con qty: 1
+                cart.products.push({_id: idProduct, qty: 1});
+                console.log(cart.products)
+            }
+
+            await cart.save();
 
 
-            return carts;
+            return cart;
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            throw error; // Re-lanzamos el error para que sea capturado por el controlador
         }
+
+
     }
 
 

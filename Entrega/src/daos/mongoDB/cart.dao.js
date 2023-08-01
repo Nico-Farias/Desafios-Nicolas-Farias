@@ -1,4 +1,6 @@
+import mongoose from "mongoose";
 import {CartModel} from "./models/cart.model.js";
+import {ProductModel} from "./models/product.model.js";
 
 
 export default class CartDao {
@@ -24,7 +26,7 @@ export default class CartDao {
 
     async getCartById(id) {
         try {
-            const response = await CartModel.findById(id)
+            const response = await CartModel.findById(id).populate('products')
 
             return response
         } catch (error) {
@@ -35,13 +37,21 @@ export default class CartDao {
 
     async updateCart(cartId, productId, qty) {
         try {
-            const response = await CartModel.findByIdAndUpdate({
+
+
+            const response = await CartModel.findOneAndUpdate({
                 _id: cartId,
                 "products._id": productId
-            }, qty, {new: true});
+            }, {
+                $inc: {
+                    "products.$.qty": qty
+                }
+            }, {new: true});
+
             return response;
         } catch (error) {
             console.log(error);
+            throw error;
         }
     }
 

@@ -14,8 +14,8 @@ export const create = async (req, res, next) => {
 export const addProduct = async (req, res, next) => {
     try {
         const {idCart} = req.params;
-        const {idProd} = req.params;
-        const newProdCart = await service.addProduct(idCart, idProd);
+        const {idProduct} = req.params;
+        const newProdCart = await service.addProduct(idCart, idProduct);
         res.json(newProdCart);
 
     } catch (error) {

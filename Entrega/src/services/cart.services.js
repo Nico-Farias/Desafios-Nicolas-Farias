@@ -35,9 +35,9 @@ export const getById = async (id) => {
     }
 }
 
-export const updateCart = async (idCart, idProduct, qty) => {
+export const updateCart = async (cartId, productId, qty) => {
     try {
-        const cartUpdate = await cartDao.updateCart(idCart, idProduct, qty)
+        const cartUpdate = await cartDao.updateCart(cartId, productId, qty)
         return cartUpdate;
     } catch (error) {
         console.log(error)

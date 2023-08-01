@@ -14,7 +14,7 @@ const router = Router()
 router.post('/', create)
 router.get('/carts', getAllCart)
 router.get('/:id', getById)
-router.put('/:idCart/product/:idProduct', updateCart)
+router.put('/:cartId/:productId', updateCart)
 router.delete('/:id', removeCart)
 router.delete('/:idCart/product/:idProd', removeProd)
 

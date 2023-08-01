@@ -44,12 +44,12 @@ export const getById = async (req, res, next) => {
 
 export const updateCart = async (req, res, next) => {
     try {
-        const {idCart, idProduct} = req.params;
+        const {cartId, productId} = req.params;
 
         const {qty} = req.body;
 
 
-        const updateQty = await service.updateCart(idCart, idProduct, qty)
+        const updateQty = await service.updateCart(cartId, productId, qty)
 
         res.status(200).json(updateQty)
 
