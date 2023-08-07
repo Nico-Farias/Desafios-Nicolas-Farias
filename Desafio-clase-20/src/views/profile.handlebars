@@ -1,0 +1,19 @@
+<h1>INICIO</h1>
+ <h2>HOLA {{user.nombre}} {{user.apellido}}</h2>
+  <div>
+    <h3>TU CARRITO</h3>
+    <div>
+      {{#if user.carts}}
+        {{#each user.carts}}
+          <h3>Producto : {{name}}</h3>
+          <p> Precio : ${{price}}</p>
+          <p> Descripcion del producto : {{description}}</p>
+        {{/each}}
+      {{else}}
+        <p>No hay productos en el carrito.</p>
+           {{/if}}
+    </div>
+
+   <button onclick="location.href='/products/'">Ver todos los productos</button>
+
+    <button onclick="location.href='/login'">Cerrar sesion</button>

@@ -1,0 +1,15 @@
+<h1>Lista de Productos</h1>
+<button onclick="location.href='/profile'">Volver atras</button>
+{{#if products.length}}
+  <ul>
+    {{#each products}}
+      <li>
+        <h3>Producto : {{name}}</h3>
+        <p>Precio: {{price}}</p>
+        <p>Descripción: {{description}}</p>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No hay productos disponibles.</p>
+{{/if}}
