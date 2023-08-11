@@ -1,15 +1,19 @@
 import {userModel} from "./models/user.model.js";
+import {createHash, isValidPassword} from '../utils.js';
 
 
 export default class UserDao {
 
     async createUser(user) {
         try {
-            const {email} = user;
+            const {email, password} = user;
             const existeUser = await userModel.findOne({email})
 
             if (! existeUser) {
-                const response = await userModel.create(user)
+                const response = await userModel.create({
+                    ...user,
+                    password: createHash(password)
+                })
                 return response
             } else {
                 return false;
@@ -20,13 +24,22 @@ export default class UserDao {
         }
     }
 
+
     async login(user) {
         try {
             const {email, password} = user;
-            const userExist = await userModel.findOne({email, password});
-            if (userExist) 
-                return userExist;
-             else 
+            const userExist = await userModel.findOne({email});
+            if (userExist) {
+                const validPassword = isValidPassword(password, userExist);
+
+                if (! validPassword) 
+                    return false;
+                 else 
+                    return userExist;
+                
+
+
+            } else 
                 return false;
             
 
@@ -54,6 +67,26 @@ export default class UserDao {
             return response
         } catch (error) {
             console.log(error)
+        }
+    }
+
+    async getByEmail(email) {
+        try {
+            const userExist = await userModel.findOne({email});
+
+            // console.log(userExist);
+            if (userExist) 
+                return userExist
+             else 
+                return false
+
+
+            
+
+
+        } catch (error) {
+            console.log(error)
+            throw new Error(error)
         }
     }
 

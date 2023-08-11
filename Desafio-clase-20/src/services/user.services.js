@@ -17,6 +17,7 @@ export const create = async (obj) => {
     }
 }
 
+
 export const loginUser = async (user) => {
     try {
         const login = await userDao.login(user)
@@ -40,6 +41,15 @@ export const getById = async (id) => {
     try {
         const UserId = await userDao.getUserById(id)
         return UserId
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getByEmail = async (email) => {
+    try {
+        const response = await userDao.getByEmail(email)
+        return response
     } catch (error) {
         console.log(error)
     }

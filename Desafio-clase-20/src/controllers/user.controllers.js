@@ -17,6 +17,7 @@ export const create = async (req, res, next) => {
     }
 }
 
+
 export const login = async (req, res, next) => {
     try {
 
@@ -31,6 +32,23 @@ export const login = async (req, res, next) => {
         } else {
             res.redirect('/error-login');
         }
+    } catch (error) {
+        next(error.message)
+    }
+}
+
+export const registerResponse = (req, res, next) => {
+    try {
+        res.json({msg: 'Register ok', session: req.session});
+    } catch (error) {
+        next(error.message)
+    }
+}
+
+export const loginResponse = async (req, res, next) => {
+    try {
+        const user = await service.getById(req.session.passport.user);
+        res.json({msg: 'Login ok', user})
     } catch (error) {
         next(error.message)
     }
@@ -56,6 +74,23 @@ export const getById = async (req, res, next) => {
             res.status(404).json({msg: 'user not found'})
         } else {
             return res.status(200).json(userId)
+        }
+
+
+    } catch (error) {
+        next(error.message)
+    }
+}
+
+export const getByEmail = async (req, res, next) => {
+    try {
+        const {email} = req.body
+
+        const userEmail = await service.getByEmail(email);
+        if (! userEmail) {
+            res.status(404).json({msg: 'user not found'})
+        } else {
+            return res.status(200).json(userEmail)
         }
 
 
@@ -109,4 +144,24 @@ export const removeProd = async (req, res, next) => {
         next(error.message)
     }
 }
-1
+
+
+export const googleResponse = async (req, res, next) => {
+    try {
+        const {nombre, apellido, email, isGoogle} = req.user;
+
+
+        res.json({
+            msg: "Register/Login Google OK",
+            session: req.session,
+            userData: {
+                nombre,
+                apellido,
+                email,
+                isGoogle
+            }
+        });
+    } catch (error) {
+        next(error.message);
+    }
+};

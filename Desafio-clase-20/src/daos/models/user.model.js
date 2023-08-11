@@ -18,8 +18,15 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        default: ''
     },
+    isGoogle: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+
 
     carts: [
         {

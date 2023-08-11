@@ -4,16 +4,16 @@ import session from 'express-session';
 import './db/connection.js';
 import MongoStore from 'connect-mongo';
 import {connectionDB} from './db/connection.js';
-
-
 import handlebars from 'handlebars';
 import {__dirname} from './utils.js';
 import userRouter from './routes/user.router.js';
 import productRouter from './routes/product.router.js';
 import viewsRouter from './routes/views.router.js';
-
 import expressHandlebars from 'express-handlebars';
 import {allowInsecurePrototypeAccess} from '@handlebars/allow-prototype-access';
+import passport from 'passport';
+import './passport/localStrategy.js'
+import './passport/googleStrategy.js'
 
 
 const mongoStoreOptions = {
@@ -44,6 +44,9 @@ app.set('view engine', 'handlebars');
 
 app.use(cookieParser());
 app.use(session(mongoStoreOptions));
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use('/users', userRouter);
 app.use('/products', productRouter);
