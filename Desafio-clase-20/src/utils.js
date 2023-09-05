@@ -18,3 +18,7 @@ export const createHash = password => hashSync(password, genSaltSync(10))
  * @returns  true o false
  */
 export const isValidPassword = (password, user) => compareSync(password, user.password)
+
+export const createResponse = (res, statusCode, data) => {
+    return res.status(statusCode).json({data});
+};

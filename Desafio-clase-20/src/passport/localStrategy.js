@@ -1,7 +1,7 @@
 import passport from 'passport'
 import {Strategy as LocalStrategy} from 'passport-local'
-import UserDao from '../daos/user.dao.js'
-const userDao = new UserDao()
+import persistence from '../daos/persistence.js';
+const {userDao} = persistence;
 
 const strategyOptions = {
     usernameField: 'email',
@@ -16,7 +16,9 @@ const register = async (req, email, done) => {
         if (user) 
             return done(null, false);
         
-        const newUser = await userDao.createUser(req.body)
+
+
+        const newUser = await userDao.create(req.body)
         return done(null, newUser)
 
 

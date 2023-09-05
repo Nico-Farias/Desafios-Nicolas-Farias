@@ -1,4 +1,5 @@
-import {Router} from "express";
+/*
+import { Router } from "express";
 import {
     login,
     register,
@@ -6,6 +7,7 @@ import {
     errorRegister,
     profile
 } from "../controllers/views.controller.js";
+
 
 const router = Router();
 
@@ -17,3 +19,4 @@ router.get('/error-register', errorRegister);
 router.get('/profile', profile);
 
 export default router;
+*/

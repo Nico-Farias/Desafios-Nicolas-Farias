@@ -1,5 +1,3 @@
-import {getById} from "../services/user.services.js";
-
 export const register = (req, res) => {
     res.render('register')
 };
@@ -17,13 +15,9 @@ export const errorLogin = (req, res) => {
 };
 
 export const profile = async (req, res) => {
-    const userLogin = req.session.user
+    console.log(req.body)
 
-    const user = await getById(userLogin)
-
-    console.log(user)
-
-    res.render('profile', {user})
+    res.render('profile')
 
 
 };

@@ -1,39 +1,16 @@
 import {Router} from "express";
-import {
-    getAll,
-    getById,
-    update,
-    create,
-    remove,
-    addProduct,
-    filtroCategory,
-    filtroPriceMaxAMin,
-    filtroPriceMinAMax,
-    getAllPaginate
-} from '../controllers/product.controllers.js';
+import ProductControllers from '../controllers/product.controllers.js';
+const controllers = new ProductControllers();
 
 
 const router = Router();
 
 
-router.get('/', getAll);
-router.get('/all', getAllPaginate);
-
-
-router.get('/id/:id', getById);
-
-router.post('/', create);
-
-router.post('/:idUser/add/:idProduct', addProduct)
-
-router.put('/:id', update);
-
-router.delete('/:id', remove);
-
-router.get('/category', filtroCategory)
-
-router.get('/filtrarMaxAMin', filtroPriceMaxAMin)
-router.get('/filtrarMinAMAX', filtroPriceMinAMax)
+router.get('/', controllers.getAll);
+router.get('/prod/:id', controllers.getById);
+router.post('/', controllers.create);
+router.put('/:id', controllers.update);
+router.delete('/:id', controllers.delete);
 
 
 export default router;

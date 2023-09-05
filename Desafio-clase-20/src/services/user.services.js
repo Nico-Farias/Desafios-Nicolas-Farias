@@ -1,86 +1,61 @@
-import UserDao from '../daos/user.dao.js';
+import Services from "./class.services.js";
+import pkg from 'jsonwebtoken'
+const {sign} = pkg
+import 'dotenv/config'
+import persistence from "../daos/persistence.js";
 
-const userDao = new UserDao();
-
-export const create = async (obj) => {
-    try {
-        const newUser = await userDao.createUser(obj)
-        if (! newUser) 
-            throw new Error("Validation Error!");
-         else 
-            return newUser;
-        
+const {userDao} = persistence;
 
 
-    } catch (error) {
-        console.log(error)
-    }
-}
+const SECRET_KEY = process.env.SECRET_KEY_JWT
 
-
-export const loginUser = async (user) => {
-    try {
-        const login = await userDao.login(user)
-        return login;
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-export const getAllUser = async () => {
-    try {
-        const allUser = await userDao.getAllCart()
-        return allUser;
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-
-export const getById = async (id) => {
-    try {
-        const UserId = await userDao.getUserById(id)
-        return UserId
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-export const getByEmail = async (email) => {
-    try {
-        const response = await userDao.getByEmail(email)
-        return response
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-export const updateCart = async (UserId, productId, qty) => {
-    try {
-        const cartUpdate = await userDao.updateCart(UserId, productId, qty)
-        return cartUpdate;
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-export const deleteUser = async (id) => {
-    try {
-
-        const userDelete = await userDao.removeUser(id)
-        return userDelete
-    } catch (error) {
-        console.log(error)
+export default class UserServices extends Services {
+    constructor() {
+        super(userDao)
     }
 
-}
+    #generateToken(user) {
+        const payload = {
+            userId: user.id,
+            nombre: user.nombre,
+            apellido: user.apellido,
+            email: user.email,
+            carts: user.carts
+        };
+        return sign(payload, SECRET_KEY, {expiresIn: '10m'});
+    };
 
-export const removeProd = async (idUser, idProd) => {
-    try {
-        const prodRemove = await userDao.removeProdInCart(idUser, idProd)
+    async register(user) {
+        try {
+            return await userDao.register(user)
+        } catch (error) {
+            console.log(error)
+        }
 
-        return prodRemove
-    } catch (error) {
-        console.log(error)
     }
+
+    async login(user) {
+        try {
+            const userExist = await userDao.login(user)
+            if (userExist) 
+                return this.#generateToken(userExist)
+             else 
+                return false;
+            
+
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async getByEmail(email) {
+        try {
+            return await userDao.getByEmail(email)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
 }

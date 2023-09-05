@@ -1,7 +1,7 @@
 import {Strategy as GoogleStrategy} from 'passport-google-oauth20'
 import passport from 'passport'
-import UserDao from '../daos/user.dao.js'
-const userDao = new UserDao()
+import persistence from '../daos/persistence.js';
+const {userDao} = persistence;
 
 const strategyOptions = {
     clientID: '689118910705-htthgfaunaculoqbreifl2qea88bg37g.apps.googleusercontent.com',
@@ -25,7 +25,7 @@ const registerOrLogin = async (accessToken, refreshToken, profile, done) => {
     
 
 
-    const newUser = await userDao.createUser({
+    const newUser = await userDao.create({
         nombre: profile._json.given_name,
         apellido: profile._json.family_name,
         password: '',

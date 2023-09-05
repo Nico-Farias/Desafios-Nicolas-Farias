@@ -1,32 +1,23 @@
 import {Router} from "express";
-import {
-    create,
-    updateCart,
-    getById,
-    getAllUser,
-    removeProd,
-    removeUser,
-    login,
-    registerResponse,
-    loginResponse,
-    googleResponse
-
-} from "../controllers/user.controllers.js";
 import passport from "passport";
+import UserController from '../controllers/user.controllers.js';
 
-const router = Router()
+const controllers = new UserController()
 
-router.post('/create', passport.authenticate('register'), create)
-router.post('/login', passport.authenticate('login'), login)
-router.get('/users', getAllUser)
-router.get('/:id', getById)
-router.put('/:userId/:productId', updateCart)
-router.delete('/:id', removeUser)
-router.delete('/:idCart/product/:idProd', removeProd)
+const router = Router();
+
+router.post('/create', controllers.register);
+router.post('/login', controllers.login);
+router.get('/', controllers.getAll);
+router.get('/id/:id', controllers.getById);
+router.put('/:id', controllers.update);
+router.delete('/:id', controllers.delete);
+// router.get('/profile', controllers.profile)
+
 
 // Autenticar con google
 
-router.get('/oauth2/redirect/accounts.google.com', passport.authenticate('google', {assignProperty: 'user'}), googleResponse)
+// router.get('/oauth2/redirect/accounts.google.com', passport.authenticate('google', {assignProperty: 'user'}), controllers.profile);
 
 
 export default router;
