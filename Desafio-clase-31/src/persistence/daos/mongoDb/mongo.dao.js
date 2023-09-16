@@ -5,7 +5,7 @@ export default class MongoDao {
 
     async getAll() {
         try {
-            const response = await this.model.find({});
+            const response = await this.model.find({})
             return response;
         } catch (error) {
             console.log(error);

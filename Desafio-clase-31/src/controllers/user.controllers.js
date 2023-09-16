@@ -1,6 +1,8 @@
 import Controllers from "./class.controllers.js";
 import UserServices from "../services/user.services.js";
-import {createResponse} from "../utils.js";
+
+import 'dotenv/config'
+import {createResponse, transporter} from "../utils.js";
 const userService = new UserServices()
 
 
@@ -12,14 +14,23 @@ export default class UserController extends Controllers {
     register = async (req, res, next) => {
         try {
             const newUser = await userService.register(req.body);
+
             if (! newUser) {
-
                 createResponse(res, 404, {msg: "User already registered"})
-            } else 
-                createResponse(res, 200, newUser)
+            }
 
+            const gmailOptions = {
+                from: process.env.EMAIL,
+                to: newUser.email,
+                subject: 'Bienvenido/a',
+                html: `<h1>Hola ${
+                    newUser.nombre
+                }, ¡Gracias por registrarte!</h1>`
+            };
+            const response = await transporter.sendMail(gmailOptions);
+            console.log('email enviado!');
 
-            
+            createResponse(res, 200, {newUser, response})
 
 
         } catch (error) {
@@ -80,6 +91,24 @@ export default class UserController extends Controllers {
         } catch (error) {
             next(error.message)
         }
+    }
+
+    sendEmail = async (req, res) => {
+        try {
+            const {email, nombre} = req.user;
+            const gmailOptions = {
+                from: process.env.EMAIL,
+                to: email,
+                subject: 'Bienvenido/a',
+                html: `<h1>Hola ${nombre}, ¡Gracias por registrarte!</h1>`
+            };
+            const response = await transporter.sendMail(gmailOptions);
+            console.log('email enviado!');
+            res.json(response);
+        } catch (error) {
+            console.log(error);
+        }
+
     }
 
     /* profile = (req, res, next) => {

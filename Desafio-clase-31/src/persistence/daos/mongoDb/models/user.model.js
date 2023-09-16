@@ -41,8 +41,5 @@ const userSchema = new mongoose.Schema({
     ]
 })
 
-userSchema.pre('find', function () {
-    this.populate('productos')
-})
 
 export const userModel = mongoose.model('user', userSchema)

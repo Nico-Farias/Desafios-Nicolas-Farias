@@ -6,6 +6,6 @@ const controller = new TicketController();
 
 const router = Router();
 
-router.post('/current', checkAuth, controller.generateTicket);
+router.post('/purchase', checkAuth, controller.generateTicket);
 
 export default router;
