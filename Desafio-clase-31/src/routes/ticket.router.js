@@ -1,0 +1,11 @@
+import {Router} from "express";
+import TicketController from '../controllers/ticket.controller.js';
+import {checkAuth} from "../middlewares/checkAuth.js";
+
+const controller = new TicketController();
+
+const router = Router();
+
+router.post('/current', checkAuth, controller.generateTicket);
+
+export default router;
