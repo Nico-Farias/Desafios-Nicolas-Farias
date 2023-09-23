@@ -1,4 +1,7 @@
 import {createResponse} from '../utils.js'
+import {HttpResponse} from '../errors/http.response.js';
+import error from '../errors/error.dictionary.js'
+const httpResponse = new HttpResponse()
 
 export default class Controllers {
     constructor(service) {
@@ -8,7 +11,7 @@ export default class Controllers {
     getAll = async (req, res, next) => {
         try {
             const items = await this.service.getAll();
-            createResponse(res, 200, items);
+            httpResponse.ok(res, items);
         } catch (error) {
             next(error.message);
         }
@@ -19,12 +22,9 @@ export default class Controllers {
             const {id} = req.params;
             const item = await this.service.getById(id);
             if (! item) 
-                createResponse(res, 404, {
-                    method: "service",
-                    error: "Item not found"
-                });
+                httpResponse.NotFound(res, error.ITEM_NOT_FOUND);
              else 
-                createResponse(res, 200, item);
+                httpResponse.ok(res, item);
             
 
 
@@ -37,12 +37,12 @@ export default class Controllers {
         try {
             const newItem = await this.service.create(req.body);
             if (! newItem) 
-                createResponse(res, 404, {
+                httpResponse.NotFound(res, {
                     method: "service",
                     error: "Validation error"
                 });
              else 
-                createResponse(res, 200, newItem);
+                httpResponse.ok(res, newItem);
             
 
 
@@ -56,13 +56,10 @@ export default class Controllers {
             const {id} = req.params;
             const item = await this.service.getById(id);
             if (! item) 
-                createResponse(res, 404, {
-                    method: "service",
-                    error: "Item not found"
-                });
+                httpResponse.NotFound(res, error.ITEM_NOT_FOUND);
              else {
                 const itemUpd = await this.service.update(id, req.body);
-                createResponse(res, 200, itemUpd);
+                httpResponse.OK(res, itemUpd);
             }
         } catch (error) {
             next(error.message);
@@ -74,10 +71,10 @@ export default class Controllers {
             const {id} = req.params;
             const item = await this.service.getById(id);
             if (! item) 
-                createResponse(res, 404, {error: "Item not found"});
+                httpResponse.NotFound(res, error.ITEM_NOT_FOUND);
              else {
                 const userD = await this.service.delete(id);
-                createResponse(res, 200, {
+                httpResponse.ok(res, {
                     msg: "User deleted",
                     item
                 });

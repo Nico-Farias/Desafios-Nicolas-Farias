@@ -1,7 +1,10 @@
 import Controllers from './class.controllers.js';
 import TickerServices from '../services/ticket.services.js';
 import {createResponse} from '../utils.js';
+import error from '../errors/error.dictionary.js'
+import {HttpResponse} from '../errors/http.response.js';
 const ticketServices = new TickerServices();
+const httpResponse = new HttpResponse();
 
 export default class TicketController extends Controllers {
     constructor() {
@@ -15,11 +18,11 @@ export default class TicketController extends Controllers {
             const ticket = await ticketServices.generateTicket(_id)
             console.log(ticket)
             if (! ticket) {
-                createResponse(res, 404, {msg: 'Invalid ticket'})
+                httpResponse.NotFound(res, {msg: 'Invalid ticket'})
             }
 
 
-            createResponse(res, 200, {
+            httpResponse.ok(res, {
                 msg: 'Compra correcta ',
                 ticket
             })

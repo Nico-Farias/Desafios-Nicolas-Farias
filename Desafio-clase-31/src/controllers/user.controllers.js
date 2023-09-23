@@ -1,9 +1,13 @@
 import Controllers from "./class.controllers.js";
 import UserServices from "../services/user.services.js";
-
 import 'dotenv/config'
 import {createResponse, transporter} from "../utils.js";
+import {HttpResponse} from "../errors/http.response.js";
+import error from '../errors/error.dictionary.js'
+
+
 const userService = new UserServices()
+const httpResponse = new HttpResponse()
 
 
 export default class UserController extends Controllers {
@@ -16,7 +20,7 @@ export default class UserController extends Controllers {
             const newUser = await userService.register(req.body);
 
             if (! newUser) {
-                createResponse(res, 404, {msg: "User already registered"})
+                httpResponse.NotFound(res, error.USER_ALREDY_REGISTER)
             }
 
             const gmailOptions = {
@@ -30,7 +34,7 @@ export default class UserController extends Controllers {
             const response = await transporter.sendMail(gmailOptions);
             console.log('email enviado!');
 
-            createResponse(res, 200, {newUser, response})
+            httpResponse.ok(res, {newUser, response})
 
 
         } catch (error) {
@@ -45,11 +49,7 @@ export default class UserController extends Controllers {
             const user = await userService.getByEmail(email)
 
             res.header("Authorization", token);
-            createResponse(res, 200, {
-                msg: "Login Ok",
-                user,
-                token
-            })
+            httpResponse.ok(res, {user, token})
 
 
         } catch (error) {
@@ -62,9 +62,9 @@ export default class UserController extends Controllers {
             const {id} = req.params;
             const newUser = await userService.userRepositoryDto(id)
             if (! newUser) {
-                createResponse(res, 404, {msg: 'user not found'})
+                httpResponse.NotFound(res, error.USER_NOT_FOUND)
             } else 
-                createResponse(res, 200, newUser)
+                httpResponse.ok(res, newUser)
 
 
             
@@ -82,9 +82,9 @@ export default class UserController extends Controllers {
             const {qty} = req.params;
             const newProdInCart = await userService.addProdToCard(_id, idProd, Number(qty));
             if (! newProdInCart) 
-                createResponse(res, 404, 'Error add product to user cart');
+                httpResponse.NotFound(res, error.ADD_PRODUCT_ERROR);
              else 
-                createResponse(res, 200, newProdInCart);
+                httpResponse.ok(res, newProdInCart);
             
 
 

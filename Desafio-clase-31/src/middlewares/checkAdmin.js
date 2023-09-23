@@ -11,7 +11,8 @@ export const checkAdmin = async (req, res, next) => {
     try {
         const authHeader = req.get("Authorization");
         if (! authHeader) {
-            return res.status(401).json({msg: "Unauthorized"});
+            return httpResponse.Unauhtorized(res, error.UNAUHTORIZED);
+
         }
 
         const token = authHeader.split(" ")[1];
@@ -19,16 +20,19 @@ export const checkAdmin = async (req, res, next) => {
 
         const user = await userDao.getById(decode.userId);
         if (! user) {
-            return res.status(400).json({msg: "Unauthorized"});
+            return httpResponse.Unauhtorized(res, error.UNAUHTORIZED);
+
         }
         const userAdmin = user.admin;
         if (userAdmin !== true) {
-            return createResponse(res, 404, {msg: "User not admin"})
+            return httpResponse.Unauhtorized(res, error.UNAUHTORIZED);
+
         }
 
         next();
     } catch (err) {
         console.log(err);
-        return res.status(401).json({msg: "Unauthorized"});
+        return httpResponse.Unauhtorized(res, error.UNAUHTORIZED);
+
     }
 };

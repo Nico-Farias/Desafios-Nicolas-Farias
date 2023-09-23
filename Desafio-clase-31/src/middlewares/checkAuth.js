@@ -1,8 +1,12 @@
 import pkg from 'jsonwebtoken';
-const {verify} = pkg;
-import persistence from '../persistence/daos/persistence.js';
-const {userDao} = persistence;
 import 'dotenv/config';
+import persistence from '../persistence/daos/persistence.js';
+import {HttpResponse} from '../errors/http.response.js';
+import error from '../errors/error.dictionary.js'
+
+const {verify} = pkg;
+const {userDao} = persistence;
+const httpResponse = new HttpResponse()
 
 
 const SECRET_KEY = process.env.SECRET_KEY_JWT;
@@ -11,7 +15,7 @@ export const checkAuth = async (req, res, next) => {
     try {
         const authHeader = req.get("Authorization");
         if (! authHeader) {
-            return res.status(401).json({msg: "Unauthorized"});
+            return httpResponse.Unauhtorized(res, error.UNAUHTORIZED);
         }
 
         const token = authHeader.split(" ")[1];
@@ -20,13 +24,15 @@ export const checkAuth = async (req, res, next) => {
 
         const user = await userDao.getById(decode.userId);
         if (! user) {
-            return res.status(400).json({msg: "Unauthorized"});
+            return httpResponse.Unauhtorized(res, error.UNAUHTORIZED);
+
         }
 
         req.user = user;
         next();
     } catch (err) {
         console.log(err);
-        return res.status(401).json({msg: "Unauthorized"});
+        return httpResponse.Unauhtorized(res, error.UNAUHTORIZED);
+
     }
 };

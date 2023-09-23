@@ -4,6 +4,7 @@ import passport from 'passport';
 import './passport/localStrategy.js'
 import './passport/googleStrategy.js'
 import MainRouter from './routes/indexRouter.js';
+import {errorHandler} from './middlewares/errorHandler.js';
 
 const mainRouter = new MainRouter()
 
@@ -17,8 +18,11 @@ app.use(cookieParser());
 app.use(passport.initialize())
 app.use(passport.session())
 */
+
+
 app.use('/api', mainRouter.getRouter())
 // app.use('/', viewsRouter)
+app.use(errorHandler)
 
 
 app.listen(8080, () => {
