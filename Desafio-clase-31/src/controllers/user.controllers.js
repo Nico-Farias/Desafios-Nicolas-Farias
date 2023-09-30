@@ -4,6 +4,7 @@ import 'dotenv/config'
 import {createResponse, transporter} from "../utils.js";
 import {HttpResponse} from "../errors/http.response.js";
 import error from '../errors/error.dictionary.js'
+import {logguer} from "../utils/logguer.js";
 
 
 const userService = new UserServices()
@@ -20,7 +21,7 @@ export default class UserController extends Controllers {
             const newUser = await userService.register(req.body);
 
             if (! newUser) {
-                httpResponse.NotFound(res, error.USER_ALREDY_REGISTER)
+                httpResponse.NotFound(res, logguer.error(error.USER_ALREDY_REGISTER))
             }
 
             const gmailOptions = {
@@ -32,7 +33,7 @@ export default class UserController extends Controllers {
                 }, ¡Gracias por registrarte!</h1>`
             };
             const response = await transporter.sendMail(gmailOptions);
-            console.log('email enviado!');
+            logguer.info('email enviado!');
 
             httpResponse.ok(res, {newUser, response})
 
@@ -103,7 +104,7 @@ export default class UserController extends Controllers {
                 html: `<h1>Hola ${nombre}, ¡Gracias por registrarte!</h1>`
             };
             const response = await transporter.sendMail(gmailOptions);
-            console.log('email enviado!');
+            logguer.info('email enviado!');
             res.json(response);
         } catch (error) {
             console.log(error);

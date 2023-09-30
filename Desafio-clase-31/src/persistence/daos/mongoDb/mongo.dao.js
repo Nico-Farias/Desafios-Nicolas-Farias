@@ -1,3 +1,5 @@
+import {logguer} from "../../../utils/logguer.js";
+
 export default class MongoDao {
     constructor(model) {
         this.model = model;
@@ -8,7 +10,7 @@ export default class MongoDao {
             const response = await this.model.find({})
             return response;
         } catch (error) {
-            console.log(error);
+            logguer.error(error);
         }
     }
 
@@ -17,7 +19,7 @@ export default class MongoDao {
             const response = await this.model.findById(id);
             return response;
         } catch (error) {
-            console.log(error);
+            logguer.error(error);
         }
     }
 
@@ -26,7 +28,7 @@ export default class MongoDao {
             const response = await this.model.create(obj);
             return response;
         } catch (error) {
-            console.log(error);
+            logguer.error(error);
         }
     }
 
@@ -37,7 +39,7 @@ export default class MongoDao {
             }, obj);
             return obj;
         } catch (error) {
-            console.log(error);
+            logguer.error(error);
         }
     }
 
@@ -46,7 +48,7 @@ export default class MongoDao {
             const response = await this.model.findByIdAndDelete(id);
             return response;
         } catch (error) {
-            console.log(error);
+            logguer.error(error);
         }
     }
 }

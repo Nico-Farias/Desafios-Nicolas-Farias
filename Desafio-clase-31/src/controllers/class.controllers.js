@@ -1,6 +1,7 @@
 import {createResponse} from '../utils.js'
 import {HttpResponse} from '../errors/http.response.js';
 import error from '../errors/error.dictionary.js'
+import {logguer} from '../utils/logguer.js';
 const httpResponse = new HttpResponse()
 
 export default class Controllers {
@@ -56,7 +57,7 @@ export default class Controllers {
             const {id} = req.params;
             const item = await this.service.getById(id);
             if (! item) 
-                httpResponse.NotFound(res, error.ITEM_NOT_FOUND);
+                httpResponse.NotFound(res, logguer.error(error.ITEM_NOT_FOUND));
              else {
                 const itemUpd = await this.service.update(id, req.body);
                 httpResponse.OK(res, itemUpd);

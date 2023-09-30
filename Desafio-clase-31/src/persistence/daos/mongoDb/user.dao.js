@@ -1,6 +1,7 @@
 import {userModel} from "./models/user.model.js";
 import {createHash, isValidPassword} from '../../../utils.js';
 import MongoDao from "./mongo.dao.js";
+import {logguer} from "../../../utils/logguer.js";
 
 
 export default class UserDaoMongo extends MongoDao {
@@ -24,7 +25,7 @@ export default class UserDaoMongo extends MongoDao {
             }
 
         } catch (error) {
-            console.log(error)
+            logguer.error(error)
         }
     }
 
@@ -49,7 +50,7 @@ export default class UserDaoMongo extends MongoDao {
 
 
         } catch (error) {
-            console.log(error);
+            logguer.error(error);
         }
     };
 
@@ -58,7 +59,7 @@ export default class UserDaoMongo extends MongoDao {
         try {
             const userExist = await this.model.findOne({email});
 
-            // console.log(userExist);
+
             if (userExist) 
                 return userExist
              else 
@@ -69,7 +70,7 @@ export default class UserDaoMongo extends MongoDao {
 
 
         } catch (error) {
-            console.log(error)
+            logguer.error(error)
             throw new Error(error)
         }
     }
@@ -87,7 +88,7 @@ export default class UserDaoMongo extends MongoDao {
             return user
 
         } catch (error) {
-            console.log(error)
+            logguer.error(error)
         }
     }
 

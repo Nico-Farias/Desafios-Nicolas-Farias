@@ -1,3 +1,5 @@
+import {logguer} from "../utils/logguer.js";
+
 export default class Services {
     constructor(dao) {
         this.dao = dao;
@@ -8,7 +10,7 @@ export default class Services {
             const items = await this.dao.getAll();
             return items;
         } catch (error) {
-            console.log(error);
+            logguer.error(error);
         }
     };
 
@@ -21,8 +23,9 @@ export default class Services {
                 return item;
             
 
+
         } catch (error) {
-            console.log(error);
+            logguer.error(error);
         }
     };
 
@@ -35,8 +38,9 @@ export default class Services {
                 return newItem;
             
 
+
         } catch (error) {
-            console.log(error);
+            logguer.error(error);
         }
     };
 
@@ -49,8 +53,9 @@ export default class Services {
                 return await this.dao.update(id, obj);
             
 
+
         } catch (error) {
-            console.log(error);
+            logguer.error(error);
         }
     };
 
@@ -63,8 +68,9 @@ export default class Services {
                 return await this.dao.delete(id);
             
 
+
         } catch (error) {
-            console.log(error);
+            logguer.error(error);
         }
     };
 }

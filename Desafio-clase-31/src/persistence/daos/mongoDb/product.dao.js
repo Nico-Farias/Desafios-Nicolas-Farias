@@ -1,5 +1,6 @@
 import MongoDao from './mongo.dao.js';
 import {ProductModel} from './models/product.model.js';
+import {logguer} from '../../../utils/logguer.js';
 
 export default class ProductDaoMongo extends MongoDao {
     constructor() {
@@ -15,7 +16,7 @@ export default class ProductDaoMongo extends MongoDao {
                 },])
             return response
         } catch (error) {
-            console.log(error)
+            logguer.warn(error)
         }
     }
 
@@ -36,7 +37,7 @@ export default class ProductDaoMongo extends MongoDao {
             ]);
             return response;
         } catch (error) {
-            console.log(error);
+            logguer.warn(error);
         }
     }
 
@@ -58,7 +59,7 @@ export default class ProductDaoMongo extends MongoDao {
             ]);
             return response;
         } catch (error) {
-            console.log(error);
+            logguer.warn(error);
         }
     }
 
@@ -67,7 +68,7 @@ export default class ProductDaoMongo extends MongoDao {
             const response = await this.model.paginate({}, {page, limit})
             return response
         } catch (error) {
-            console.log(error)
+            logguer.warn(error)
         }
     }
 
