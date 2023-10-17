@@ -6,6 +6,9 @@ import './passport/googleStrategy.js'
 import MainRouter from './routes/indexRouter.js';
 import {errorHandler} from './middlewares/errorHandler.js';
 import {logguer} from './utils/logguer.js';
+import {swaggerOptions} from './docs/info.js';
+import swaggerUI from 'swagger-ui-express';
+import swaggerJSDoc from 'swagger-jsdoc';
 
 
 const mainRouter = new MainRouter()
@@ -13,17 +16,19 @@ const mainRouter = new MainRouter()
 
 const app = express();
 
+const specs = swaggerJSDoc(swaggerOptions)
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(specs));
 app.use(express.json());
+app.use(cookieParser(process.env.SECRET_COOKIE));
 app.use(express.urlencoded({extended: true}));
-app.use(cookieParser());
+
 /*
 app.use(passport.initialize())
 app.use(passport.session())
 */
 
 
-app.use('/api', mainRouter.getRouter())
-
+app.use('/api', mainRouter.getRouter());
 app.get('/logguers', (req, res) => {
     logguer.info('PROBANDO LOGGUER')
 
@@ -35,8 +40,8 @@ app.get('/logguers', (req, res) => {
     logguer.error('Error')
 
     res.json({msg: 'Probando logguer'})
-})
-app.use(errorHandler)
+});
+app.use(errorHandler);
 
 
 app.listen(8080, () => {

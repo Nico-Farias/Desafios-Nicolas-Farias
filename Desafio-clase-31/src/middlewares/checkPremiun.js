@@ -1,15 +1,13 @@
 import pkg from 'jsonwebtoken'
 const {verify} = pkg;
 import persistence from '../persistence/daos/persistence.js';
-import { HttpResponse } from '../errors/http.response.js';
-const httpResponse = new HttpResponse()
 const {userDao} = persistence;
 import 'dotenv/config'
 
 
 const SECRET_KEY = process.env.SECRET_KEY_JWT;
 
-export const checkAdmin = async (req, res, next) => {
+export const checkPremuin = async (req, res, next) => {
     try {
         const authHeader = req.get("Authorization");
         if (! authHeader) {
@@ -25,8 +23,8 @@ export const checkAdmin = async (req, res, next) => {
             return httpResponse.Unauhtorized(res, error.UNAUHTORIZED);
 
         }
-        const userAdmin = user.admin;
-        if (userAdmin !== true) {
+        const userPrem = user.role;
+        if (userPrem !== 'premiun') {
             return httpResponse.Unauhtorized(res, error.UNAUHTORIZED);
         }
 

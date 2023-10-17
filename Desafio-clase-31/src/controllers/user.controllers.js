@@ -1,10 +1,9 @@
 import Controllers from "./class.controllers.js";
 import UserServices from "../services/user.services.js";
-import 'dotenv/config'
-import {createResponse, transporter} from "../utils.js";
 import {HttpResponse} from "../errors/http.response.js";
 import error from '../errors/error.dictionary.js'
 import {logguer} from "../utils/logguer.js";
+import {sendEmail} from "../utils/email.js";
 
 
 const userService = new UserServices()
@@ -24,18 +23,11 @@ export default class UserController extends Controllers {
                 httpResponse.NotFound(res, logguer.error(error.USER_ALREDY_REGISTER))
             }
 
-            const gmailOptions = {
-                from: process.env.EMAIL,
-                to: newUser.email,
-                subject: 'Bienvenido/a',
-                html: `<h1>Hola ${
-                    newUser.nombre
-                }, ¡Gracias por registrarte!</h1>`
-            };
-            const response = await transporter.sendMail(gmailOptions);
+
+            await sendEmail(newUser, 'register')
             logguer.info('email enviado!');
 
-            httpResponse.ok(res, {newUser, response})
+            httpResponse.ok(res, newUser)
 
 
         } catch (error) {
@@ -43,11 +35,16 @@ export default class UserController extends Controllers {
         }
     };
 
+
     login = async (req, res, next) => {
         try {
             const token = await userService.login(req.body);
             const {email} = req.body
             const user = await userService.getByEmail(email)
+
+            if (! user) {
+                return httpResponse.NotFound(res, logguer.error(error.USER_NOT_FOUND))
+            }
 
             res.header("Authorization", token);
             httpResponse.ok(res, {user, token})
@@ -94,32 +91,60 @@ export default class UserController extends Controllers {
         }
     }
 
-    sendEmail = async (req, res) => {
-        try {
-            const {email, nombre} = req.user;
-            const gmailOptions = {
-                from: process.env.EMAIL,
-                to: email,
-                subject: 'Bienvenido/a',
-                html: `<h1>Hola ${nombre}, ¡Gracias por registrarte!</h1>`
-            };
-            const response = await transporter.sendMail(gmailOptions);
-            logguer.info('email enviado!');
-            res.json(response);
-        } catch (error) {
-            console.log(error);
-        }
 
-    }
-
-    /* profile = (req, res, next) => {
+    profile = (req, res, next) => {
         try {
             const {nombre, apellido, email} = req.user;
-            createResponse(res, 200, {nombre, apellido, email});
+            httpResponse.ok(res, {nombre, apellido, email});
         } catch (error) {
             next(error.message);
         }
     };
-*/
+
+    cambiarPassword = async (req, res, next) => {
+
+
+        try {
+            const user = req.user;
+            console.log('controller', user)
+            const tokenReset = await userService.cambiarPassword(user)
+            console.log('tokenReset', tokenReset)
+
+            if (! tokenReset) {
+                httpResponse.NotFound(res, 'Not send email')
+            }
+            res.cookie('tokenreset', tokenReset)
+
+            return httpResponse.ok(res, 'email enviado')
+
+        } catch (error) {
+            next(error.message);
+        }
+    }
+
+    updatePassword = async (req, res, next) => {
+        try {
+            const user = req.user;
+            const {password} = user;
+            const {tokenreset} = req.cookies;
+
+            if (!tokenreset) {
+                return httpResponse.NotFound(res, 'Token not found')
+            }
+
+            const update = await userService.updatePassword(user, password);
+            console.log(update)
+            if (! update) {
+                return httpResponse.NotFound(res, 'Password not found')
+            }
+
+            res.clearCookie('tokenreset')
+
+            return httpResponse.ok(res, update)
+
+        } catch (error) {
+            logguer.error(error)
+        }
+    }
 
 }

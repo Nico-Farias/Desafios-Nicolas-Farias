@@ -28,6 +28,17 @@ export const checkAuth = async (req, res, next) => {
 
         }
 
+        const now = Math.floor(Date.now() / 1000); // Tiempo actual en segundos
+        const tokenExp = decode.exp; // Tiempo de expiración del token
+        const timeUntilExp = tokenExp - now; // Tiempo hasta la expiración en segundos
+
+        if (timeUntilExp <= 300) { // Generar un nuevo token
+            const newToken = userDao.generateToken(user, '15m');
+            console.log('>>>>>>SE REFRESCÓ EL TOKEN')
+            res.set("Authorization", `Bearer ${newToken}`);
+        }
+
+
         req.user = user;
         next();
     } catch (err) {

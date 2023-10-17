@@ -1,6 +1,6 @@
 import {dirname} from 'path'
 import {fileURLToPath} from 'url'
-import {createTransport} from "nodemailer";
+
 import 'dotenv/config'
 import {faker} from '@faker-js/faker';
 
@@ -29,16 +29,6 @@ export const createResponse = (res, statusCode, data) => {
     return res.status(statusCode).json({data});
 };
 
-
-export const transporter = createTransport({
-    service: 'gmail',
-    port: 465,
-    secure: true,
-    auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORD
-    }
-})
 
 export const productFaker = () => {
 

@@ -4,6 +4,9 @@ const {sign} = pkg
 import 'dotenv/config'
 import persistence from "../persistence/daos/persistence.js";
 import UserRepository from "../persistence/repository/users/user.repository.js";
+import {logguer} from "../utils/logguer.js";
+import {sendEmail} from "../utils/email.js";
+
 const userRepository = new UserRepository()
 
 const {userDao, prodDao} = persistence;
@@ -31,10 +34,12 @@ export default class UserServices extends Services {
         try {
             return await userDao.register(user)
         } catch (error) {
-            console.log(error)
+            logguer.error(error);
+
         }
 
     }
+
 
     async login(user) {
         try {
@@ -47,7 +52,8 @@ export default class UserServices extends Services {
 
 
         } catch (error) {
-            console.log(error)
+            logguer.error(error);
+
         }
     }
 
@@ -55,7 +61,8 @@ export default class UserServices extends Services {
         try {
             return await userDao.getByEmail(email)
         } catch (error) {
-            console.log(error)
+            logguer.error(error);
+
         }
     }
 
@@ -70,7 +77,8 @@ export default class UserServices extends Services {
 
 
         } catch (error) {
-            console.log(error)
+            logguer.error(error);
+
         }
     }
     async addProdToCard(idUser, idProd, qty) {
@@ -79,12 +87,38 @@ export default class UserServices extends Services {
             if (! existProd) 
                 return false;
             
+
+
             const response = await userDao.addProdToCart(idUser, idProd, qty);
             return response;
         } catch (error) {
-            console.log(error);
+            logguer.error(error);
+
         }
     }
 
+    async cambiarPassword(user) {
+        try {
+            const token = await userDao.cambiarPassword(user)
+            if (! token) 
+                return false;
+            
+
+
+            return await sendEmail(user, 'resetPass', token)
+
+
+        } catch (error) {
+            logguer.error(error);
+        }
+    }
+
+    async updatePassword(user, password) {
+        try {
+            return await userDao.updatePassword(user, password)
+        } catch (error) {
+            logguer.error(error);
+        }
+    }
 
 }

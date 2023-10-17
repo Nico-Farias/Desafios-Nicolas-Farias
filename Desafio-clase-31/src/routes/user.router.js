@@ -7,14 +7,17 @@ const controllers = new UserController()
 
 const router = Router();
 
-router.post('/create', controllers.register);
+router.post('/', controllers.register);
 router.post('/login', controllers.login);
-router.get('/users', controllers.getAll);
-router.get('/id/:id', controllers.getById);
+router.get('/', controllers.getAll);
+router.get('/:id', controllers.getById);
 router.get('/dto/user/:id', controllers.userRepositoryDto)
 router.put('/:id', controllers.update);
 router.delete('/:id', controllers.delete);
+router.get('/profile', checkAuth, controllers.profile)
 router.post('/add/:idProd/qty/:qty', checkAuth, controllers.addProdToCart)
+router.post('/cambiar-password', checkAuth, controllers.cambiarPassword)
+router.post('/nuevo-password', checkAuth, controllers.updatePassword)
 
 
 // Autenticar con google
