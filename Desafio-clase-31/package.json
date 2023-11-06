@@ -6,7 +6,12 @@
   "type": "module",
   "scripts": {
     "star": "node .",
-    "dev": "nodemon ."
+    "dev": "nodemon .",
+    "test:productDao": " node ./src/tests/product/product.dao.test.js",
+    "test:productRouteAPI": "set NODE_OPTIONS=--experimental-vm-modules && npx jest /src/tests/product/product.route.test.js",
+    "test:productRoute": "node ./src/tests/product/product.route.test.js",
+    "test:usersDao": " node ./src/tests/users/users.dao.test.js",
+    "test:usersRoute": " node ./src/tests/users/users.route.test.js"
   },
   "keywords": [],
   "author": "",
@@ -32,5 +37,11 @@
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
     "winston": "^3.10.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "jest": "^29.7.0",
+    "mocha": "^10.2.0",
+    "supertest": "^6.3.3"
   }
 }

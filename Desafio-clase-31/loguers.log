@@ -238,3 +238,142 @@
 [32minfo[39m | 10-14-2023 16:42:40 | 🚀 Server corriendo en puerto 8080
 [32minfo[39m | 10-14-2023 16:45:18 | 🚀 Server corriendo en puerto 8080
 [32minfo[39m | 10-14-2023 16:47:48 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 18:19:41 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 18:21:56 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 18:26:47 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 18:27:12 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 18:36:44 | 🚀 Server corriendo en puerto 8080
+[31merror[39m | 10-29-2023 18:40:51 | User already registere
+[31merror[39m | 10-29-2023 18:41:17 | data must be a string or Buffer and salt must either be a salt string or a number of rounds
+[31merror[39m | 10-29-2023 18:41:17 | User already registere
+[31merror[39m | 10-29-2023 18:41:46 | data must be a string or Buffer and salt must either be a salt string or a number of rounds
+[31merror[39m | 10-29-2023 18:41:46 | User already registere
+[31merror[39m | 10-29-2023 18:43:00 | data must be a string or Buffer and salt must either be a salt string or a number of rounds
+[31merror[39m | 10-29-2023 18:43:00 | User already registere
+[32minfo[39m | 10-29-2023 18:45:50 | 🚀 Server corriendo en puerto 8080
+[31merror[39m | 10-29-2023 18:46:02 | data must be a string or Buffer and salt must either be a salt string or a number of rounds
+[31merror[39m | 10-29-2023 18:46:02 | User already registere
+[31merror[39m | 10-29-2023 18:47:40 | User not found
+[32minfo[39m | 10-29-2023 18:49:38 | email enviado!
+[31merror[39m | 10-29-2023 18:51:05 | Cast to ObjectId failed for value "users" (type string) at path "_id" for model "user"
+[31merror[39m | 10-29-2023 18:51:43 | data must be a string or Buffer and salt must either be a salt string or a number of rounds
+[31merror[39m | 10-29-2023 18:51:43 | User already registere
+[31merror[39m | 10-29-2023 18:52:21 | data must be a string or Buffer and hash must be a string
+[32minfo[39m | 10-29-2023 19:19:46 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:20:16 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:20:27 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:20:39 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:25:11 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:26:43 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:29:32 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:39:48 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:41:11 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:41:41 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:42:09 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:44:20 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:46:09 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:46:29 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:46:46 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:47:29 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:47:48 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:49:59 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:50:17 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:52:20 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:52:49 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:53:25 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:53:46 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:54:41 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:55:55 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:56:37 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:57:19 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 19:57:34 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:01:30 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:03:31 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:03:38 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:05:24 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:06:13 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:06:28 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:07:34 | 🚀 Server corriendo en puerto 8080
+[31merror[39m | 10-29-2023 20:07:46 | data must be a string or Buffer and salt must either be a salt string or a number of rounds
+[31merror[39m | 10-29-2023 20:07:46 | data must be a string or Buffer and salt must either be a salt string or a number of rounds
+[32minfo[39m | 10-29-2023 20:08:26 | 🚀 Server corriendo en puerto 8080
+[31merror[39m | 10-29-2023 20:08:35 | data must be a string or Buffer and salt must either be a salt string or a number of rounds
+[31merror[39m | 10-29-2023 20:08:35 | data must be a string or Buffer and salt must either be a salt string or a number of rounds
+[32minfo[39m | 10-29-2023 20:09:07 | 🚀 Server corriendo en puerto 8080
+[31merror[39m | 10-29-2023 20:09:12 | data must be a string or Buffer and salt must either be a salt string or a number of rounds
+[31merror[39m | 10-29-2023 20:09:12 | data must be a string or Buffer and salt must either be a salt string or a number of rounds
+[32minfo[39m | 10-29-2023 20:10:08 | 🚀 Server corriendo en puerto 8080
+[31merror[39m | 10-29-2023 20:10:12 | data must be a string or Buffer and salt must either be a salt string or a number of rounds
+[31merror[39m | 10-29-2023 20:10:13 | data must be a string or Buffer and salt must either be a salt string or a number of rounds
+[32minfo[39m | 10-29-2023 20:12:12 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:12:52 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:13:54 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:14:14 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:15:51 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:16:13 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:16:44 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:19:06 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:21:14 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:21:46 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:23:25 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:24:45 | 🚀 Server corriendo en puerto 8080
+[31merror[39m | 10-29-2023 20:24:51 | data and salt arguments required
+[32minfo[39m | 10-29-2023 20:25:02 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:25:32 | 🚀 Server corriendo en puerto 8080
+[31merror[39m | 10-29-2023 20:25:38 | E11000 duplicate key error collection: Coderhouse.users index: email_1 dup key: { email: "nicoscs12@gmail.com" }
+[32minfo[39m | 10-29-2023 20:26:24 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:26:29 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:26:44 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:27:12 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:27:42 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:27:53 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:28:31 | 🚀 Server corriendo en puerto 8080
+[31merror[39m | 10-29-2023 20:30:24 | User already registere
+[32minfo[39m | 10-29-2023 20:30:36 | email enviado!
+[32minfo[39m | 10-29-2023 20:32:39 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:33:02 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:37:52 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:41:29 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:43:54 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:44:42 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:45:36 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:47:37 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:49:03 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:51:41 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:53:11 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:56:06 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:56:21 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 20:57:49 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:00:34 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:01:52 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:03:17 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:03:54 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:04:28 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:04:38 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:05:42 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:06:22 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:07:08 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:09:27 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:10:22 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:11:15 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:11:46 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:13:24 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:15:16 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:15:27 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-29-2023 21:16:19 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-30-2023 19:39:37 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-30-2023 19:44:50 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-30-2023 19:47:44 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-30-2023 19:49:36 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-30-2023 19:50:09 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-30-2023 19:52:35 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-30-2023 19:53:08 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-30-2023 19:53:56 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-30-2023 19:54:44 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-30-2023 19:56:31 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-30-2023 19:59:39 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-30-2023 20:11:27 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-30-2023 20:12:16 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-30-2023 20:13:37 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-30-2023 20:14:31 | 🚀 Server corriendo en puerto 8080
+[32minfo[39m | 10-30-2023 20:22:11 | 🚀 Server corriendo en puerto 8080

@@ -47,3 +47,6 @@ app.use(errorHandler);
 app.listen(8080, () => {
     logguer.info('🚀 Server corriendo en puerto 8080');
 });
+
+
+export default app;

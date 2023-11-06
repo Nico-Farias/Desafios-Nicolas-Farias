@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 import {createHash, isValidPassword} from '../../../utils.js';
 import MongoDao from "./mongo.dao.js";
 import {logguer} from "../../../utils/logguer.js";
-import {HttpResponse} from '../../../errors/http.response.js';
 
 
 export default class UserDaoMongo extends MongoDao {
@@ -24,7 +23,7 @@ export default class UserDaoMongo extends MongoDao {
             const {email, password} = user;
             const existeUser = await this.getByEmail(email);
 
-            if (!existeUser) {
+            if (! existeUser) {
                 const response = await this.model.create({
                     ...user,
                     password: createHash(password)

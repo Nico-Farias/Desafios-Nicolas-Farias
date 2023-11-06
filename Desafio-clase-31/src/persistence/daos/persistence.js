@@ -1,10 +1,10 @@
 import UserDaoFS from './file/user.dao.js';
 import ProductDaoFS from './file/product.dao.js';
 import ProductDaoMongo from './mongoDb/product.dao.js';
-import UserDaoMongo from "./mongoDb/UserDaoMongo.js";
 import {initMongoDB} from './mongoDb/connection.js';
 import TicketDao from './mongoDb/ticket.dao.js';
 import {logguer} from '../../utils/logguer.js';
+import UserDaoMongo from './mongoDb/UserDaoMongo.js';
 
 let prodDao;
 let userDao;
@@ -24,9 +24,12 @@ switch (persistence) {
 
 
         break;
-    default: userDao = new UserDaoFS();
-        prodDao = new ProductDaoFS();
-        persistence = 'file'
+    default:
+        await initMongoDB()
+        userDao = new UserDaoMongo()
+        prodDao = new ProductDaoMongo()
+        ticketDao = new TicketDao()
+
         break;
 
 }
